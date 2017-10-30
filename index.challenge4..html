@@ -1,0 +1,31 @@
+<!-- Challenge 4 (Script Tags)
+index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cities</title>
+</head>
+<body>
+  <h1>Cities</h1>
+
+  <ul class='city-list'></ul>
+     <script src="jquery.js"></script>
+     <script src="client.js"></script>
+</body>
+</html>
+
+
+<!-- client.js -->
+$(function(){
+
+  $.get('/cities', appendToList); 
+
+  function appendToList(cities) {
+    var list = [];
+    for(var i in cities){
+      list.push($('<li>', { text: cities[i] }));
+    }
+    $('.city-list').append(list);
+  }
+});
